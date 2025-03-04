@@ -6,9 +6,12 @@ sealed trait MenuCategory
 
 object MenuCategory {
   case object Food extends MenuCategory
+
   case object Drink extends MenuCategory
 
+
 }
+
 
 trait FoodType
 

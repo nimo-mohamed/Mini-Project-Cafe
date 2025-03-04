@@ -62,6 +62,7 @@ eclipse
 *.eml
 .history
 .idea
+.idea/codeStyles
 .idea_modules
 /.idea_modules
 *.iml
