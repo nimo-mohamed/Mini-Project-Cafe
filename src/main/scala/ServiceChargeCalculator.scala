@@ -14,14 +14,14 @@ object ServiceChargeCalculator {
     val rate: Double = optionalCharge.getOrElse {
       bill match {
         case b if !b.containsFood => 0.0
-        case b if b.containsPremiumFood => 0.25
+        case b if b.containsPremiumFood || b.containsPremiumDrink => 0.25
         case b if b.containsHotFood => 0.20
         case b if b.containsColdFood => 0.10
         case _ => 0.0
 
       }
     }
-
+    bill.subtotal * rate
 
   }
 }

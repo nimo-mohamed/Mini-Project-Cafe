@@ -7,8 +7,9 @@ libraryDependencies ++= Seq(
   "org.scalactic" %% "scalactic" % "3.2.19",
 )
 
+
 lazy val root = (project in file("."))
   .settings(
-      name := "Mini-Project Cafe"
+    name := "Mini-Project Cafe"
   )
 

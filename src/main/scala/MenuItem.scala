@@ -2,24 +2,6 @@
 // Premium specials that can be able to be added/removed from the menu.
 // Stock count of the menu items. Some cannot order an item if the count is zero.
 
-sealed trait MenuCategory
-
-object MenuCategory {
-  case object Food extends MenuCategory
-
-  case object Drink extends MenuCategory
-
-
-}
-
-
-trait FoodType
-
-case object ColdFood extends FoodType
-case object HotFood extends FoodType
-case object Drinks extends FoodType
-
-
 case class MenuItem(
                      name: String,
                      price: Double,
@@ -28,13 +10,14 @@ case class MenuItem(
                      foodType: FoodType,
                      isPremium: Boolean
                    ) {
-  def stockAvailable: Boolean = stockCount > 0
+
 }
 
-object CafeMenu {
+object MenuItem {
+
 
   // Hot Drinks
-  val coffee = MenuItem(name = "Coffee", price = 2.50, stockCount = 10, MenuCategory.Drink, foodType = Drinks, isPremium = false)
+  val coffee = MenuItem(name = "Coffee", price = 2.50, stockCount = 0, MenuCategory.Drink, foodType = Drinks, isPremium = false)
   val tea = MenuItem(name = "Tea", price = 2.00, stockCount = 8, MenuCategory.Drink, foodType = Drinks, isPremium = false)
 
   // Cold Drinks
@@ -58,3 +41,5 @@ object CafeMenu {
   val premiumCheesePlate = MenuItem(name = "Premium Cheese Plate", price = 20.00, stockCount = 2, MenuCategory.Food, foodType = ColdFood, isPremium = true)
   val smokedSalmon = MenuItem(name = "Smoked Salmon", price = 17.00, stockCount = 4, MenuCategory.Food, foodType = ColdFood, isPremium = true)
 }
+
+
