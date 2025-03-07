@@ -1,9 +1,9 @@
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-import scala.reflect.io.NoAbstractFile.input
 
-class BillSpec extends AnyWordSpec with Matchers {
+
+class CafeLogicSpec extends AnyWordSpec with Matchers {
       val bill: Bill = Bill(Seq(
         OrderLine(coffee, 2),
         OrderLine(sandwich, 1)
@@ -27,6 +27,7 @@ class BillSpec extends AnyWordSpec with Matchers {
   //  should "apply 10% service charge when there is food but not premium food"
 
   //  should "apply 25% service charge when there is premium food"
+  //  should "apply 25% service charge when there is premium drink"
 
   // should "apply 0% service charge when there is no food"
 }

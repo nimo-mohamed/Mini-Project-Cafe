@@ -4,16 +4,26 @@ import MenuItem.{coffee, sandwich, steak}
 class CafeLogic {
 
     val  orderLine1: Seq[OrderLine] = Seq(
-      OrderLine(coffee, 2),
-      OrderLine(sandwich, 1),
-      OrderLine(steak, 1)
+      OrderLine(MenuItem.coffee, 2),
+      OrderLine(MenuItem.sandwich, 1),
+      OrderLine(MenuItem.steak, 1)
     )
 
 
   //  Create an order
-  def createOrder(orderLine: OrderLine): String = Either[String, Seq[OrderLine]] = {
-    if (OrderLine.stoc)
-  }
+  def createOrder(orderLine: OrderLine): Either[String, Seq[OrderLine]] =
+    if (orderLine.stockAvailable) Right(Seq(orderLine)) else
+      Left(s"${orderLine.item} is out of stock")
+
+
+//
+//  def createOrder(orderLine: Seq[OrderLine]): Either[String, Seq[OrderLine]] = {
+//
+//    if (orderLine.item.stockAvailable == true)  Right(Seq(orderLine)) else
+//      Left(s"Item is out of stock")
+//  }
+
+
 
   // Construct the Bill
   val bill = Bill(orderLine1)
