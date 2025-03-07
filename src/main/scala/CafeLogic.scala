@@ -16,15 +16,6 @@ class CafeLogic {
       Left(s"${orderLine.item} is out of stock")
 
 
-//
-//  def createOrder(orderLine: Seq[OrderLine]): Either[String, Seq[OrderLine]] = {
-//
-//    if (orderLine.item.stockAvailable == true)  Right(Seq(orderLine)) else
-//      Left(s"Item is out of stock")
-//  }
-
-
-
   // Construct the Bill
   val bill = Bill(orderLine1)
 

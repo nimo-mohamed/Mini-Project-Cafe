@@ -3,7 +3,7 @@
 case class Bill(lines: Seq[OrderLine]) {
 
   // Calculate the subtotal of all OrderLine items
-  def subtotal: Double = lines.map(_.lineTotal).sum
+ def subtotal: Double = lines.map(_.lineTotal).sum
 
   // Check whether any line contains a Food item
   def containsFood: Boolean = {
