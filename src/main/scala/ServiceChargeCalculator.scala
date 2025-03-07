@@ -10,7 +10,7 @@
 
 
 object ServiceChargeCalculator {
-  def calculateServiceCharge(bill: Bill, optionalCharge: Option[Double] = None): Double = {
+  def calculateServiceCharge(bill: ItemCategory, optionalCharge: Option[Double] = None): Double = {
     val rate: Double = optionalCharge.getOrElse {
       bill match {
         case b if !b.containsFood => 0.0

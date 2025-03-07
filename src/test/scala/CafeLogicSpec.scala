@@ -4,9 +4,9 @@ import org.scalatest.wordspec.AnyWordSpec
 
 
 class CafeLogicSpec extends AnyWordSpec with Matchers {
-      val bill: Bill = Bill(Seq(
-        OrderLine(coffee, 2),
-        OrderLine(sandwich, 1)
+      val bill: ItemCategory = ItemCategory(Seq(
+        Order(coffee, 2),
+        Order(sandwich, 1)
       ))
       val coffee: MenuItem = MenuItem(name = "Coffee", price = 2.50, stockCount = 0, MenuCategory.Drink, foodType = Drinks, isPremium = false)
       val sandwich: MenuItem = MenuItem(name = "Sandwich", price = 5.00, stockCount = 3, MenuCategory.Food, foodType = HotFood, isPremium = false)

@@ -3,13 +3,13 @@ import MenuItem.{sandwich, steak}
 object SandBox extends App {
 
 
-  val orderLine1: Seq[OrderLine] = Seq(
-      OrderLine(MenuItem.coffee, 2),
-      OrderLine(sandwich, 1),
-      OrderLine(steak, 1)
+  val orderLine1: Seq[Order] = Seq(
+      Order(MenuItem.coffee, 2),
+      Order(sandwich, 1),
+      Order(steak, 1)
   )
 
-  val bill = Bill(orderLine1)
+  val bill = ItemCategory(orderLine1)
 
 
   val cafeLogic = new CafeLogic()

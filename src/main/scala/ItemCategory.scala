@@ -1,29 +1,29 @@
 // Take a customer order and produce an itemised bill which includes the total with an optional service charge added.
 
-case class Bill(lines: Seq[OrderLine]) {
+case class ItemCategory(orders: Seq[Order]) {
 
   // Calculate the subtotal of all OrderLine items
- def subtotal: Double = lines.map(_.lineTotal).sum
+ def subtotal: Double = orders.map(_.lineTotal).sum
 
   // Check whether any line contains a Food item
   def containsFood: Boolean = {
-    lines.exists(orderLine => orderLine.item.category == MenuCategory.Food)
+    orders.exists(order => order.item.category == MenuCategory.Food)
   }
 
   // Check if there's any hot food
-  def containsHotFood: Boolean = lines.exists(orderLine => orderLine.item.category == MenuCategory.Food && orderLine.item.foodType == HotFood)
+  def containsHotFood: Boolean = orders.exists(order => order.item.category == MenuCategory.Food && order.item.foodType == HotFood)
 
   // Check if there's any cold food
-  def containsColdFood: Boolean = lines.exists(orderLine => orderLine.item.category == MenuCategory.Food && orderLine.item.foodType == ColdFood)
+  def containsColdFood: Boolean = orders.exists(order => order.item.category == MenuCategory.Food && order.item.foodType == ColdFood)
 
   // Check if there's any premium food
-  def containsPremiumFood: Boolean = lines.exists(orderLine => orderLine.item.category == MenuCategory.Food && orderLine.item.isPremium)
+  def containsPremiumFood: Boolean = orders.exists(order => order.item.category == MenuCategory.Food && order.item.isPremium)
 
   // Check if there's any premium drink
-  def containsPremiumDrink: Boolean = lines.exists(orderLine => orderLine.item.category == MenuCategory.Drink && orderLine.item.isPremium)
+  def containsPremiumDrink: Boolean = orders.exists(order => order.item.category == MenuCategory.Drink && order.item.isPremium)
 
   /** Produce an itemised string of each line: */
-  def itemisedBill: Seq[(String, Double)] = lines.map(orderLine => (orderLine.item.name, orderLine.item.price))
+  def itemisedBill: Seq[(String, Double)] = orders.map(order => (order.item.name, order.item.price))
 
 
   /** Calculate the total including an optional or automatic service charge. */
