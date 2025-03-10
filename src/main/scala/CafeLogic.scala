@@ -11,9 +11,9 @@ class CafeLogic {
 
 
   //  Create an order
-  def createOrder(orderLine: Order): Either[String, Seq[Order]] =
-    if (orderLine.stockAvailable) Right(Seq(orderLine)) else
-      Left(s"${orderLine.item} is out of stock")
+  def createOrder(order: Order): Either[String, Seq[Order]] =
+    if (order.stockAvailable) Right(Seq(order)) else
+      Left(s"${order.item} is out of stock")
 
 
   // Construct the Bill
@@ -37,4 +37,20 @@ class CafeLogic {
 //  def customCharge = ServiceChargeCalculator.calculateServiceCharge(bill, Some(0.15))
 
 
+
+  // Calculate the subtotal of all OrderLine items
+  def subtotal: Double = orders.map(_.lineTotal).sum
+
+
+
+
+  /** Calculate the total including an optional or automatic service charge. */
+  def totalWithServiceCharge(optionalCharge: Option[Double] = None): Double = {
+    val serviceChargeAmount = ServiceChargeCalculator.calculateServiceCharge(this, optionalCharge)
+    subtotal + serviceChargeAmount
+  }
+  // The **this** keyword ensures the correct instance of Bill is passed to calculateServiceCharge.
+
+  /** Produce an itemised string of each line: */
+  def itemisedBill: Seq[(String, Double)] = orders.map(order => (order.item.name, order.item.price))
 }

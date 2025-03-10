@@ -2,8 +2,6 @@
 
 case class ItemCategory(orders: Seq[Order]) {
 
-  // Calculate the subtotal of all OrderLine items
- def subtotal: Double = orders.map(_.lineTotal).sum
 
   // Check whether any line contains a Food item
   def containsFood: Boolean = {
@@ -22,16 +20,7 @@ case class ItemCategory(orders: Seq[Order]) {
   // Check if there's any premium drink
   def containsPremiumDrink: Boolean = orders.exists(order => order.item.category == MenuCategory.Drink && order.item.isPremium)
 
-  /** Produce an itemised string of each line: */
-  def itemisedBill: Seq[(String, Double)] = orders.map(order => (order.item.name, order.item.price))
 
-
-  /** Calculate the total including an optional or automatic service charge. */
-  def totalWithServiceCharge(optionalCharge: Option[Double] = None): Double = {
-    val serviceChargeAmount = ServiceChargeCalculator.calculateServiceCharge(this, optionalCharge)
-    subtotal + serviceChargeAmount
-  }
-// The **this** keyword ensures the correct instance of Bill is passed to calculateServiceCharge.
 }
 
 
