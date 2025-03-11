@@ -2,10 +2,9 @@
 
 case class ItemCategory(orders: Seq[Order]) {
 
-
   // Check whether any line contains a Food item
   def containsFood: Boolean = {
-    orders.exists(order => order.item.category == MenuCategory.Food)
+    orders.exists(orderLine => orderLine.item.category == MenuCategory.Food)
   }
 
   // Check if there's any hot food
@@ -20,7 +19,5 @@ case class ItemCategory(orders: Seq[Order]) {
   // Check if there's any premium drink
   def containsPremiumDrink: Boolean = orders.exists(order => order.item.category == MenuCategory.Drink && order.item.isPremium)
 
-
 }
-
 

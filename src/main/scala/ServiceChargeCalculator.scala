@@ -8,20 +8,16 @@
 
 // instead of If else USE patter match!!!
 
-
 object ServiceChargeCalculator {
-  def calculateServiceCharge(bill: ItemCategory, optionalCharge: Option[Double] = None): Double = {
-    val rate: Double = optionalCharge.getOrElse {
-      bill match {
-        case b if !b.containsFood => 0.0
-        case b if b.containsPremiumFood || b.containsPremiumDrink => 0.25
-        case b if b.containsHotFood => 0.20
-        case b if b.containsColdFood => 0.10
-        case _ => 0.0
 
-      }
+  def calculateServiceCharge(orderedItemCategory: ItemCategory, optionalCharge: Option[Double] = None): Double = optionalCharge.getOrElse {
+    orderedItemCategory match {
+      case b if !b.containsFood => 0.0
+      case b if b.containsPremiumFood || b.containsPremiumDrink => 0.25
+      case b if b.containsHotFood => 0.20
+      case b if b.containsColdFood => 0.10
+      case _ => 0.0
+
     }
-    bill.subtotal * rate
-
   }
 }
